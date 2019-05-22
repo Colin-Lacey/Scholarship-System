@@ -2,8 +2,7 @@
 public class ScholarshipAwarder {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		// distribute scholarship objects among student objects
 	}
-
+	
 }
