@@ -1,4 +1,3 @@
-
 public class Student {
 	private int GPA;
 	private int faculty;
