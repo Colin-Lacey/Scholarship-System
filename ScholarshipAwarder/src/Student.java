@@ -1,11 +1,11 @@
 public class Student {
 	private int GPA;
-	private int faculty;
-	private int academicLevel;
-	private int[] scholarshipsAppliedFor;
+	private String faculty;
+	private String academicLevel;
+	private String[] scholarshipsAppliedFor;
 	
 	
-	public Student(int GPA, int faculty, int academicLevel, int[] scholarshipsAppliedFor) {
+	public Student(int GPA, String faculty, String academicLevel, String[] scholarshipsAppliedFor) {
 		this.GPA = GPA;
 		this.faculty = faculty;
 		this.academicLevel = academicLevel;
@@ -15,13 +15,13 @@ public class Student {
 	public int getGPA() {
 		return this.GPA;
 	}
-	public int getFaculty() {
+	public String getFaculty() {
 		return this.faculty;
 	}
-	public int getAcademicLevel() {
+	public String getAcademicLevel() {
 		return this.academicLevel;
 	}
-	public int getScholarshipsAppliedFor() {
+	public String[] getScholarshipsAppliedFor() {
 		return this.scholarshipAppliedFor;
 	}
 }
