@@ -1,10 +1,10 @@
 <?php
 	
-	$student = $POST[studentID];
-	$gpa = $POST[GPA];
-	$faculty = $POST[faculty];
-	$acad = $POST[academicLevel];
-	$schol = $POST[scholarship];
+	$student = $_POST[studentID];
+	$gpa = $_POST[GPA];
+	$faculty = $_POST[faculty];
+	$acad = $_POST[academicLevel];
+	$schol = $_POST[scholarship];
 	
 	mysql_connect("localhost", "root", "");
 	mysql_select_db("students");
