@@ -22,6 +22,6 @@ public class Student {
 		return this.academicLevel;
 	}
 	public String[] getScholarshipsAppliedFor() {
-		return this.scholarshipAppliedFor;
+		return this.scholarshipsAppliedFor;
 	}
 }
