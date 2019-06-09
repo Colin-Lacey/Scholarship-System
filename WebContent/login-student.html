@@ -1,0 +1,27 @@
+<!--
+extensive code taken and modified from 
+https://javatutorial.net/java-servlet-post-example 
+-->
+<!DOCTYPE html>
+<html>
+		<head>
+			<title>Form input</title>
+		</head>
+		<body bgcolor = "pink">
+			<form action="login" method="POST">
+				Login with your details:
+				<p> Student ID
+					<input type="text" name="userID" />
+				</p>
+				<p> Password
+					<input type="text" name="password" />
+				</p>
+				<p>
+					<input type="submit" value="Submit" />
+				</p>
+				<p>
+					Not a student or postdoc? Login as an <a href="login-admin">administrator</a>, or <a href="register">register</a>
+				</p>
+			</form>
+		</body>
+</html>

@@ -32,7 +32,7 @@ public class ScholarshipAwarder {
 		scholarshipsAppliedFor.add(new Scholarship(4, "Arts", 4));
 
 		// Testing different filters 
-		Student student = new Student(4, "Science", 1);
+		Student student1 = new Student(4, "Science", 1);
 		Student student2 = new Student(3, "Nursing", 3);
 		/*filter.filterLevel(scholarshipsAppliedFor, student);
 		filter.filterFaculty(scholarshipsAppliedFor, student);
