@@ -1,50 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.css"/>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
 </head>
 <body>
 	
 	<div class="container">
-	<table id="example" class="display" style="width:100%">
+	<table id=scholarships class="display" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Academic Level</th>
+                <th>Faculty</th>
+                <th>Minimum GPA</th>
+                <th>Award</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td>Colin Lacey Honorary Scholarship</td>
+                <td>Undergraduate</td>
+                <td>Science</td>
+                <td>3.69</td>
+                <td>$420</td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
     </table>
-    <script type="text/javascript">
+   	</div>
+    <script>
 		$(document).ready(function() {
-	    	$('.document').DataTable();
+	    	$('.display').DataTable();
 		} );
 	</script>
 </body>

@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Administrator Portal</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.css"/>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/sc-2.0.0/sl-1.3.0/datatables.min.js"></script>
 </head>
 <body>
-
-<h1>Add scholarship</h1>
-<h1>Modify/Delete scholarship</h1>
-
-
+	
+	<div class="container">
+	<table id=scholarships class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Academic Level</th>
+                <th>Faculty</th>
+                <th>Minimum GPA</th>
+                <th>Award</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Colin Lacey Honorary Scholarship</td>
+                <td>Undergraduate</td>
+                <td>Science</td>
+                <td>3.69</td>
+                <td>$420</td>
+            </tr>
+        </tbody>
+    </table>
+   	</div>
+    <script>
+		$(document).ready(function() {
+	    	$('.display').DataTable();
+		} );
+	</script>
 </body>
 </html>
