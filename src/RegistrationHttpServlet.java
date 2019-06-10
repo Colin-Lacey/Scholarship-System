@@ -17,21 +17,7 @@ public class RegistrationHttpServlet extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
-		// create HTML form
-		PrintWriter writer = response.getWriter();
-		writer.append("<!DOCTYPE html>\r\n")
-			  .append("<html>\r\n")
-			  .append("		<head>\r\n")
-			  .append("			<title>Form input</title>\r\n")
-			  .append("		</head>\r\n")
-			  .append("		<body>\r\n")
-			  .append("			<form action=\"welcome\" method=\"POST\">\r\n")
-			  .append("				Enter your name: \r\n")
-			  .append("				<input type=\"text\" name=\"user\" />\r\n")
-			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
-			  .append("			</form>\r\n")
-			  .append("		</body>\r\n")
-			  .append("</html>\r\n");
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 

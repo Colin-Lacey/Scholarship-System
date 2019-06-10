@@ -10,12 +10,12 @@
 </welcome-file-list>
 
 <servlet>
-<servlet-name>MyHttpServlet</servlet-name>
+<servlet-name>MyHttpServlet0</servlet-name>
 <servlet-class>RegistrationHttpServlet</servlet-class>
 </servlet>
 
 <servlet-mapping>
-<servlet-name>MyHttpServlet</servlet-name>
+<servlet-name>MyHttpServlet0</servlet-name>
 <url-pattern>/welcome</url-pattern>
 </servlet-mapping>
 
