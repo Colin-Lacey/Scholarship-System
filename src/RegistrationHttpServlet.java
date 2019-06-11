@@ -42,7 +42,7 @@ public class RegistrationHttpServlet extends HttpServlet {
 			writer.append("	Welcome " + user + ".\r\n");
 			writer.append("Your GPA is " + Double.toString(gpa) + ", your faculty is " + faculty + ", and your academic level is " + level +".");
 		} else {
-			writer.append("	You did not entered a name!\r\n");
+			writer.append("	You did not enter a name!\r\n");
 		}
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
