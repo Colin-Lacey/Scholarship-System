@@ -25,4 +25,12 @@
     <servlet-name>adminLogin</servlet-name>
     <url-pattern>/LoginAdminServlet/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>studentPortal</servlet-name>
+    <servlet-class>StudentPortalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentPortal</servlet-name>
+    <url-pattern>/StudentPortalServlet/</url-pattern>
+  </servlet-mapping>
 </web-app>

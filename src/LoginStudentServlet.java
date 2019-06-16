@@ -40,7 +40,7 @@ public class LoginStudentServlet extends HttpServlet {
 		System.out.println(password);
 		if (connect.loginStudent(user, password) == true) {
 			System.out.println("success");
-			response.sendRedirect("student-portal.html");
+			response.sendRedirect("StudentPortalServlet");
 		} else {
 			response.sendRedirect("wrong.html");
 		}

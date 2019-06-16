@@ -45,6 +45,26 @@ public class DBConnect {
 //			System.out.println(ex);
 //		}
 	}
+	public Scholarship[] getScholarships() {
+		Scholarship scholarships[];
+		// mySQL query to get all scholarships
+		try{
+            PreparedStatement ps =con.prepareStatement("select * from tbl_name");
+
+            ResultSet rs=ps.executeQuery();
+            while(rs.next())
+            {
+                System.out.println(rs.getString(1)); //here you can get data, the '1' indicates column number based on your query
+
+            }
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error in getData"+e);
+		}
+		return scholarships;
+	}
 	public boolean loginAdmin(String user, String password) {
 		if (password.equals("swordfish")) return true;
 		else return false;
