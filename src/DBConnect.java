@@ -22,17 +22,24 @@ public class DBConnect {
 			System.out.println("Error: "+ex);
 		}
 	}
-	public void addScholarship(String user, double GPA, String faculty, String level) {
-//		try {
-//			// ID, Name, Faculty, Quantity, Level, Money offered, GPA
-//			String query = "INSERT INTO scholarships VALUES (DEFAULT, %s, %s, 5, %s, 200, %d)"(user,);
-//			PreparedStatement preparedStmt = con.prepareStatement(query);
-//			preparedStmt.executeUpdate();		
-//			
-//		}catch(Exception ex) {
-//			
-//			System.out.println(ex);
-//		}
+	public void addScholarship(String name, double GPA, String faculty, String level, int award) {
+		try {
+			// scholarship columns
+			String query = "INSERT INTO scholarship VALUES (DEFAULT, '"
+					+ name
+					+ "', NULL, NULL, '"
+					+ level
+					+ "', NULL, NULL, NULL, "
+					+ String.valueOf(GPA)
+					+ ", '"
+					+ faculty
+					+ "')";
+			PreparedStatement preparedStmt = con.prepareStatement(query);
+			preparedStmt.executeUpdate();		
+		
+		}catch(Exception ex) {
+			System.out.println(ex);
+		}
 	}
 	public void deleteScholarship(String user, double GPA, String faculty, String level) {
 //		try {
@@ -48,9 +55,8 @@ public class DBConnect {
 	}
 	public ArrayList<Scholarship> getScholarships() {
 		ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
-		// mySQL query to get all scholarships
 		try{
-            PreparedStatement ps =con.prepareStatement("select * from scholarships");
+            PreparedStatement ps =con.prepareStatement("select * from scholarship");
 
             ResultSet rs=ps.executeQuery();
             while(rs.next())
@@ -102,14 +108,15 @@ public class DBConnect {
 			 //ID, username, password, student name, level, scholarship owned, scholarship offered, scholarships accepted, GPA, Faculty
 			String query = "INSERT INTO student VALUES (DEFAULT, '"
 					+ user
-					+ "', NULL, NULL, '"
+					+ "', '"
+					+ password
+					+ "', NULL, '"
 					+ level
 					+ "', NULL, NULL, NULL, "
 					+ String.valueOf(GPA)
 					+ ", '"
 					+ faculty
 					+ "')";
-//			String query = "INSERT INTO student VALUES (DEFAULT, 'vince', NULL, NULL, 'UnderGrad', NULL, NULL, NULL, 4.0, 'science')";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			preparedStmt.executeUpdate();		
 			

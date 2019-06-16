@@ -41,4 +41,12 @@
     <servlet-name>adminPortal</servlet-name>
     <url-pattern>/AdminPortalServlet/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>addScholarship</servlet-name>
+    <servlet-class>AddScholarshipServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addScholarship</servlet-name>
+    <url-pattern>/AddScholarshipServlet/</url-pattern>
+  </servlet-mapping>
 </web-app>

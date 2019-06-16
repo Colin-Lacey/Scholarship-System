@@ -54,38 +54,39 @@ public class AdminPortalServlet extends HttpServlet {
 	     	        +"</thead>"
 	     	        +"<tbody>");
 	         // dynamically update table from mySQl
-	         ArrayList<Scholarship> scholarships = connect.getScholarships();
-	         // for each scholarship in the databse, format each of its attributes in the table
-	         for (Scholarship schol : scholarships) {
-	         	out.println("<tr>");
-	         	out.println("<td>");
-	         	out.println(schol.getID());
-	         	out.println("</td>");
-	         	out.println("<td>");
-	         	out.println(schol.getName());
-	         	out.println("</td>");
-	         	out.println("<td>");
-	         	out.println(schol.getAcademicLevel());
-	         	out.println("</td>");
-	         	out.println("<td>");
-	         	out.println(schol.getFaculty());
-	         	out.println("</td>");
-	         	out.println("<td>");
-	         	out.println(schol.getGPA());
-	         	out.println("</td>");
-	         	out.println("<td>");
-	         	out.println(schol.getAward());
-	         	out.println("</td>");
-	         	out.println("</tr>");
-	         }
+//	         ArrayList<Scholarship> scholarships = connect.getScholarships();
+//	         // for each scholarship in the databse, format each of its attributes in the table
+//	         for (Scholarship schol : scholarships) {
+//	         	out.println("<tr>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getID());
+//	         	out.println("</td>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getName());
+//	         	out.println("</td>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getAcademicLevel());
+//	         	out.println("</td>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getFaculty());
+//	         	out.println("</td>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getGPA());
+//	         	out.println("</td>");
+//	         	out.println("<td>");
+//	         	out.println(schol.getAward());
+//	         	out.println("</td>");
+//	         	out.println("</tr>");
+//	         }
 	         out.println("</tbody></table>");
 	         out.println("<p>\n" + 
 	         		"			<input type=\"submit\" value=\"Modify selected scholarship\" />\n" +
 	         		" 			<input type=\"submit\" value=\"Delete selected scholarship\" />\n" +
 	         		"		</p>\n" +
+	         		"<form action=\"AddScholarshipServlet\" method=\"POST\">" +
 	         		" <h1>Enter new scholarship details:</h1>\n" + 
 	         		"				<p>Name\n" + 
-	         		"					<input type=\"text\" name=\"user\" />\n" + 
+	         		"					<input type=\"text\" name=\"name\" />\n" + 
 	         		"				</p>\n" + 
 	         		"				<p>Minimum GPA\n" + 
 	         		"					<input type=\"text\" name=\"gpa\" />\n" + 
@@ -109,6 +110,7 @@ public class AdminPortalServlet extends HttpServlet {
 	         		"				<p>\n" + 
 	         		"					<input type=\"submit\" value=\"Add Scholarship\" />\n" + 
 	         		"				</p>" +
+	         		"</form>" +
 	         		"  	</div>\n" + 
 	         		"    <script>\n" + 
 	         		"	    $(document).ready(function() {\n" + 
