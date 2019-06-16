@@ -1,24 +1,23 @@
-
 public class Scholarship {
-	private int minGPA;
+	private double minGPA;
 	private String faculty;
-	private int academicLevel;
+	private String academicLevel;
 	private String id;
 
 
-	public Scholarship(int minGPA, String faculty, int academicLevel) {
+	public Scholarship(double minGPA, String faculty, String academicLevel) {
 		this.minGPA = minGPA;
 		this.faculty = faculty;
 		this.academicLevel = academicLevel;
 		// Gives a unique Identifier for any Scholarship type except for duplicates
-		this.id = Integer.toString(minGPA) + faculty + Integer.toString(academicLevel);
+		this.id = Double.toString(minGPA) + faculty + academicLevel;
 	}
 	// getters and setters
-	public int getGPA() {
+	public double getGPA() {
 		return this.minGPA;
 	}
 
-	public void setGPA(int minGPA) {
+	public void setGPA(double minGPA) {
 		this.minGPA = minGPA;
 	}
 
@@ -30,11 +29,11 @@ public class Scholarship {
 		this.faculty = faculty;
 	}
 
-	public int getAcademicLevel() {
+	public String getAcademicLevel() {
 		return this.academicLevel;
 	}
 
-	public void setAcademicLevel(int academicLevel) {
+	public void setAcademicLevel(String academicLevel) {
 		this.academicLevel = academicLevel;
 	}
 	public String getID() {
