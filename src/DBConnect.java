@@ -53,7 +53,7 @@ public class DBConnect {
 		if (password.equals("swordfish")) return true;
 		else return false;
 	}
-	public void addStudent(String user, double GPA, String faculty, String level) {
+	public void addStudent(String user, double GPA, String faculty, String level, String password) {
 		try {
 			 //ID, username, password, student name, level, scholarship owned, scholarship offered, scholarships accepted, GPA, Faculty
 			String query = "INSERT INTO student VALUES (DEFAULT, '"

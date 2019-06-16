@@ -33,8 +33,9 @@ public class StudentServlet extends HttpServlet {
 		double gpa = Double.parseDouble(request.getParameter("gpa"));
 		String faculty = request.getParameter("faculty");
 		String level = request.getParameter("level");
+		String password = request.getParameter("password");
 		// Adds the student to the database
-		connect.addStudent(user, gpa, faculty, level);
+		connect.addStudent(user, gpa, faculty, level, password);
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
