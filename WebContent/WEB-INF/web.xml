@@ -33,4 +33,12 @@
     <servlet-name>studentPortal</servlet-name>
     <url-pattern>/StudentPortalServlet/</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>adminPortal</servlet-name>
+    <servlet-class>AdminPortalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adminPortal</servlet-name>
+    <url-pattern>/AdminPortalServlet/</url-pattern>
+  </servlet-mapping>
 </web-app>

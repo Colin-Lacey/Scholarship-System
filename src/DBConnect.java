@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 import com.mysql.jdbc.*;
 
 public class DBConnect {
@@ -45,17 +46,20 @@ public class DBConnect {
 //			System.out.println(ex);
 //		}
 	}
-	public Scholarship[] getScholarships() {
-		Scholarship scholarships[];
+	public ArrayList<Scholarship> getScholarships() {
+		ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
 		// mySQL query to get all scholarships
 		try{
-            PreparedStatement ps =con.prepareStatement("select * from tbl_name");
+            PreparedStatement ps =con.prepareStatement("select * from scholarships");
 
             ResultSet rs=ps.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getString(1)); //here you can get data, the '1' indicates column number based on your query
-
+            	// create a scholarship object using values in specific columns of this row
+            	// row corresponds to a scholarship in database
+            	// ID, name, GPA, faculty, academicLevel, award
+            	Scholarship schol = new Scholarship(rs.getInt(),rs.getString(),rs.getDouble(),rs.getString(),rs.getString(),rs.getInt());
+            	scholarships.add(schol);
             }
 
 		}
@@ -66,10 +70,30 @@ public class DBConnect {
 		return scholarships;
 	}
 	public boolean loginAdmin(String user, String password) {
+		try{
+            PreparedStatement ps =con.prepareStatement("select * from scholarships");
+
+            ResultSet rs=ps.executeQuery();
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error in getData"+e);
+		}
 		if (password.equals("swordfish")) return true;
 		else return false;
 	}
 	public boolean loginStudent(String user, String password) {
+		try{
+            PreparedStatement ps =con.prepareStatement("select * from scholarships");
+
+            ResultSet rs=ps.executeQuery();
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error in getData"+e);
+		}
 		if (password.equals("swordfish")) return true;
 		else return false;
 	}
@@ -85,7 +109,6 @@ public class DBConnect {
 					+ ", '"
 					+ faculty
 					+ "')";
-			System.out.println(query);
 //			String query = "INSERT INTO student VALUES (DEFAULT, 'vince', NULL, NULL, 'UnderGrad', NULL, NULL, NULL, 4.0, 'science')";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			preparedStmt.executeUpdate();		

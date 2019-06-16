@@ -42,7 +42,7 @@ public class LoginAdminServlet extends HttpServlet {
 		System.out.println(password);
 		if (connect.loginAdmin(user, password) == true) {
 			System.out.println("success");
-			response.sendRedirect("admin-portal.html");
+			response.sendRedirect("AdminPortalServlet");
 		} else {
 			response.sendRedirect("wrong.html");
 		}
