@@ -64,7 +64,7 @@ public class DBConnect {
             	// create a scholarship object using values in specific columns of this row
             	// row corresponds to a scholarship in database
             	// ID, name, GPA, faculty, academicLevel, award
-            	Scholarship schol = new Scholarship(rs.getInt(),rs.getString(),rs.getDouble(),rs.getString(),rs.getString(),rs.getInt());
+            	Scholarship schol = new Scholarship(rs.getInt(1),rs.getString(2),rs.getDouble(7),rs.getString(3),rs.getString(5),rs.getInt(6));
             	scholarships.add(schol);
             }
 
