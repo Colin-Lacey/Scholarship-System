@@ -79,9 +79,13 @@ public class AdminPortalServlet extends HttpServlet {
 	         	out.println("</tr>");
 	         }
 	         out.println("</tbody></table>");
-	         out.println("<p>\n" + 
-	         		"			<input type=\"submit\" value=\"Modify selected scholarship\" />\n" +
-	         		" 			<input type=\"submit\" value=\"Delete selected scholarship\" />\n" +
+	         out.println( 
+	         		" 			<p>\r\n" + 
+	         		"	<form action=\"DeleteScholarshipServlet\" method = \"POST\">\r\n" + 
+	         		"		<input type=\"hidden\"  name = \"scholID\" id=\"scholID\" value=\"\" />\r\n" + 
+	         		"		<input type=\"submit\"  value = \"Delete scholarship\"/>\r\n" + 
+	         		"	</form>\r\n" + 
+	         		"</p>" 			+
 	         		"		</p>\n" +
 	         		"<form action=\"AddScholarshipServlet\" method=\"POST\">" +
 	         		" <h1>Enter new scholarship details:</h1>\n" + 
@@ -106,28 +110,30 @@ public class AdminPortalServlet extends HttpServlet {
 	         		"  						<option value=\"postgrad\">Post-graduate</option>\n" + 
 	         		"					</select>\n" + 
 	         		"				</p>\n" + 
-	         		"				<p>Award\n<input type=\"text\" name=\"award\" />\n</p>\n" +
+	         		"				<p>Award Value\n<input type=\"text\" name=\"award\" />\n</p>\n" +
+	         		"				<p>Award Quantity\n<input type=\"text\" name=\"awardNum\" />\n</p>\n" +
 	         		"				<p>\n" + 
 	         		"					<input type=\"submit\" value=\"Add Scholarship\" />\n" + 
 	         		"				</p>" +
 	         		"</form>" +
 	         		"  	</div>\n" + 
-	         		"    <script>\n" + 
-	         		"	    $(document).ready(function() {\n" + 
-	         		"	        var table = $('#example').DataTable();\n" + 
-	         		"	     \n" + 
-	         		"	        $('#example tbody').on( 'click', 'tr', function () {\n" + 
-	         		"	            $(this).toggleClass('selected');\n" + 
-	         		"	        } );\n" + 
-	         		"	     \n" + 
-	         		"	        $('#button').click( function () {\n" + 
-	         		"	            alert( table.rows('.selected').data().length +' row(s) selected' );\n" + 
-	         		"	        } );\n" + 
-	         		"	    } );\n" + 
-	         		"	</script>");
-	         
-	         out.println("</body>");
-	         out.println("</html>");
+	         		"    <script>\r\n" + 
+	         		"	$(document).ready(function (){\r\n" + 
+	         		"    var table = $('#example').DataTable();\r\n" + 
+	         		"    \r\n" + 
+	         		"    $('#example tbody').on( 'click', 'tr', function () {\r\n" + 
+	         		"       	if ( $(this).hasClass('selected') ) {\r\n" + 
+	         		"          	 $(this).removeClass('selected');\r\n" + 
+	         		"       	} else {\r\n" + 
+	         		"         	table.$('tr.selected').removeClass('selected');\r\n" + 
+	         		"           	$(this).addClass('selected');\r\n" + 
+	         		"       }\r\n" + 
+	         		"       var data = $('#example').DataTable().row('.selected').data();\r\n" + 
+	         		"       var id = data[0];\r\n" + 
+	         		"       document.getElementById('scholID').value = id;\r\n" + 
+	         		"   }); \r\n" + 
+	         		"   }); \r\n" + 
+	         		"</script></body></html>");
 	      } finally {
 	         out.close();  // Always close the output writer
 	      }

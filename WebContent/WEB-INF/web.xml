@@ -34,6 +34,14 @@
     <url-pattern>/StudentPortalServlet/</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>studentPortal2</servlet-name>
+    <servlet-class>StudentPortalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentPortal2</servlet-name>
+    <url-pattern>/LoginStudentServlet/StudentPortalServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>adminPortal</servlet-name>
     <servlet-class>AdminPortalServlet</servlet-class>
   </servlet>
@@ -47,6 +55,14 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>addScholarship</servlet-name>
-    <url-pattern>/AddScholarshipServlet/</url-pattern>
+    <url-pattern>/AdminPortalServlet/AddScholarshipServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>deleteScholarship</servlet-name>
+    <servlet-class>DeleteScholarshipServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteScholarship</servlet-name>
+    <url-pattern>/AdminPortalServlet/DeleteScholarshipServlet</url-pattern>
   </servlet-mapping>
 </web-app>

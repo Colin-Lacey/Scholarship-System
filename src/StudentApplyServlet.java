@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.*;
 
-@WebServlet("/AddScholarshipServlet")
+@WebServlet("/StudentApplyServlet")
 // Handles students registration
-public class AddScholarshipServlet extends HttpServlet {
+public class StudentApplyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	@Override
@@ -29,16 +29,12 @@ public class AddScholarshipServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnect connect = new DBConnect();
-		String name = request.getParameter("name");
-		double gpa = Double.parseDouble(request.getParameter("gpa"));
-		String faculty = request.getParameter("faculty");
-		String level = request.getParameter("level");
-		int award = Integer.parseInt(request.getParameter("award"));
-		int awardNum = Integer.parseInt(request.getParameter("awardNum"));
-		// Adds the scholarship to the database
-		connect.addScholarship(name, gpa, faculty, level, award, awardNum);
+		String user = request.getParameter("user");
+		String scholarship = request.getParameter("scholID");
+		System.out.println("the user is " + user + "\n the scholarship is " + scholarship);
 		
-		response.sendRedirect("http://localhost:8080/Scholarship-System/AdminPortalServlet/");
+		connect.addApplication(user, scholarship);
+		response.sendRedirect("http://localhost:8080/Scholarship-System/StudentPortalServlet/");
 		
 		//connect.close();
 	}

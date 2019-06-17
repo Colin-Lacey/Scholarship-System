@@ -4,15 +4,15 @@ public class Student {
 	private double GPA;
 	private String faculty;
 	private String academicLevel;
-	private String id;
+	private int id;
 	public ArrayList<Scholarship> myScholarships;
 
-	public Student(double GPA, String faculty, String academicLevel) {
+	public Student(double GPA, String faculty, String academicLevel, int id) {
 		this.GPA = GPA;
 		this.faculty = faculty;
 		this.academicLevel = academicLevel;
 		// Gives a unique Identifier for any Scholarship type except for duplicates
-		this.id = Double.toString(GPA) + faculty + academicLevel;
+		this.id = id;
 		myScholarships = new ArrayList<Scholarship>();
 	}
 	public void addScholarships(Scholarship scholarship) {
@@ -28,7 +28,7 @@ public class Student {
 	public String getAcademicLevel() {
 		return this.academicLevel;
 	}
-	public String getID() {
+	public int getID() {
 		return this.id;
 	}
 	public ArrayList<Scholarship> getMyScholarships() {

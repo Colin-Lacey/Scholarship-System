@@ -1,3 +1,4 @@
+
 // extensive code taken and modified from 
 // https://javatutorial.net/java-servlet-post-example
 
@@ -12,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.mysql.jdbc.*;
 
-@WebServlet("/AddScholarshipServlet")
+@WebServlet("/DeleteScholarshipServlet")
 // Handles students registration
-public class AddScholarshipServlet extends HttpServlet {
+public class DeleteScholarshipServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	@Override
@@ -29,14 +30,10 @@ public class AddScholarshipServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnect connect = new DBConnect();
-		String name = request.getParameter("name");
-		double gpa = Double.parseDouble(request.getParameter("gpa"));
-		String faculty = request.getParameter("faculty");
-		String level = request.getParameter("level");
-		int award = Integer.parseInt(request.getParameter("award"));
-		int awardNum = Integer.parseInt(request.getParameter("awardNum"));
+		
+		int ID = Integer.parseInt(request.getParameter("scholID"));
 		// Adds the scholarship to the database
-		connect.addScholarship(name, gpa, faculty, level, award, awardNum);
+		connect.deleteScholarship(ID);
 		
 		response.sendRedirect("http://localhost:8080/Scholarship-System/AdminPortalServlet/");
 		

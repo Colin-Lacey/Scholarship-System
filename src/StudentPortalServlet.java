@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginStudentServlet
@@ -29,7 +30,10 @@ public class StudentPortalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 	      // Allocate a output writer to write the response message into the network socket
-	      PrintWriter out = response.getWriter();
+	    HttpSession session = request.getSession(false);
+		String user = (String) session.getAttribute("user");
+		System.out.println(user);
+		PrintWriter out = response.getWriter();
 	      DBConnect connect = new DBConnect();
 	 
 	      // Write the response message, in an HTML page
@@ -79,31 +83,31 @@ public class StudentPortalServlet extends HttpServlet {
 	         	out.println("</tr>");
 	         }
 	         out.println("</tbody></table>");
-	         out.println("<p>\n" + 
-	         		"			<input type=\"submit\" value=\"Apply for scholarship(s)\" />\n" + 
+	         out.println("<p>\n" +
+	         		" <form action=\"StudentApplyServlet\" method = \"POST\">\n  " +
+	         		"<input type=\"hidden\"  name = \"scholID\" id=\"scholID\" value=\"\" />\r\n" + 
+	         		"	<input type = \"hidden\" name = \"user\" id = \"user\" value="+user+" />" +
+	         		"<input type=\"submit\" value=\"Apply for scholarship(s)\" />\n" +
+	         		" </form>" +
 	         		"		</p>\n" + 
 	         		"  	</div>\n" + 
-	         		"    <script>\n" + 
-	         		"	    $(document).ready(function() {\n" + 
-	         		"	        var table = $('#example').DataTable();\n" + 
-	         		"	     \n" + 
-	         		"	        $('#example tbody').on( 'click', 'tr', function () {\n" + 
-	         		"	            $(this).toggleClass('selected');\n" + 
-	         		"	        } );\n" + 
-	         		"	     \n" + 
-	         		"	        $('#button').click( function () {\n" + 
-	         		"	            alert( table.rows('.selected').data().length +' row(s) selected' );\n" + 
-	         		"	        } );\n" + 
-	         		"	    } );\n" + 
-	         		"	</script>");
-	         out.println("<p>Request URI: " + request.getRequestURI() + "</p>");
-	         out.println("<p>Protocol: " + request.getProtocol() + "</p>");
-	         out.println("<p>PathInfo: " + request.getPathInfo() + "</p>");
-	         out.println("<p>Remote Address: " + request.getRemoteAddr() + "</p>");
-	         // Generate a random number upon each request
-	         out.println("<p>A Random Number: <strong>" + Math.random() + "</strong></p>");
-	         out.println("</body>");
-	         out.println("</html>");
+	         		"    <script>\r\n" + 
+	         		"	$(document).ready(function (){\r\n" + 
+	         		"    var table = $('#example').DataTable();\r\n" + 
+	         		"    \r\n" + 
+	         		"    $('#example tbody').on( 'click', 'tr', function () {\r\n" + 
+	         		"       	if ( $(this).hasClass('selected') ) {\r\n" + 
+	         		"          	 $(this).removeClass('selected');\r\n" + 
+	         		"       	} else {\r\n" + 
+	         		"         	table.$('tr.selected').removeClass('selected');\r\n" + 
+	         		"           	$(this).addClass('selected');\r\n" + 
+	         		"       }\r\n" + 
+	         		"       var data = $('#example').DataTable().row('.selected').data();\r\n" + 
+	         		"       var id = data[0];\r\n" + 
+	         		"       document.getElementById('scholID').value = id;\r\n" + 
+	         		"   }); \r\n" + 
+	         		"   }); \r\n" + 
+	         		"</script></body></html>");
 	      } finally {
 	         out.close();  // Always close the output writer
 	      }

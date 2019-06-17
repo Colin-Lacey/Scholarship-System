@@ -1,11 +1,13 @@
 
 
 import java.io.IOException;
+import javax.servlet.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginStudentServlet
@@ -36,16 +38,19 @@ public class LoginStudentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DBConnect connect = new DBConnect();
 		String user = request.getParameter("user");
+		request.setAttribute("user", user);
 		String password = request.getParameter("password");
-		System.out.println(password);
 		if (connect.loginStudent(user, password) == true) {
 			System.out.println("success");
+			//RequestDispatcher rd = request.getRequestDispatcher("StudentPortalServlet");
+			//rd.forward(request, response);
+			//System.out.println("got here");
+			request.getSession().setAttribute("user", user);;
 			response.sendRedirect("StudentPortalServlet");
 		} else {
 			response.sendRedirect("wrong.html");
 		}
-//		Student student = new Student(gpa, faculty, level);
-//		ArrayList<Scholarship> arr = student.getMyScholarships();
+		
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
