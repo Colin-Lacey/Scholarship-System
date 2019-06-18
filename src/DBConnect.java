@@ -6,22 +6,18 @@ import java.util.Iterator;
 
 public class DBConnect {
 
-	
 	private Connection con;
 	private Statement st;
 
-	
 	public DBConnect() {
-		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			// (Database schema: scholarship), local root, local password
 			con = DriverManager.getConnection("jdbc:mysql://localhost/scholarships", "root", "Vd.30000214");
 			st = con.createStatement();
 			
-			
 		}catch(Exception ex) {
-			System.out.println("Error: "+ex);
+			System.out.println("Error: " + ex);
 		}
 	}
 	public void addScholarship(String name, double GPA, String faculty, String level, int award, int awardNum) {
@@ -40,7 +36,6 @@ public class DBConnect {
 					+ ", "
 					+ String.valueOf(GPA)
 					+ ")";
-			System.out.println(query);
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			preparedStmt.executeUpdate();		
 			
@@ -49,12 +44,12 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
+	
 	public void deleteScholarship(int ID) {
 		try {
 			 //ID
 			String query = "DELETE FROM scholarships WHERE Scholarship_ID = "
 					+ Integer.toString(ID);
-			System.out.println(query);
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			preparedStmt.executeUpdate();		
 			
@@ -63,17 +58,18 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
+	
 	public ArrayList<Scholarship> getScholarships() {
 		ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
-		try{
-            PreparedStatement ps =con.prepareStatement("select * from scholarships");
+		try {
+            PreparedStatement ps = con.prepareStatement("select * from scholarships");
 
             ResultSet rs=ps.executeQuery();
-            while(rs.next())
-            {
-            	// create a scholarship object using values in specific columns of this row
-            	// row corresponds to a scholarship in database
-            	// ID, name, GPA, faculty, academicLevel, award
+            while(rs.next()) {
+            	/* create a scholarship object using values in specific columns of this row
+            	* row corresponds to a scholarship in database
+            	* ID, name, GPA, faculty, academicLevel, award
+            	*/
             	Scholarship schol = new Scholarship(rs.getInt(1),rs.getString(2),rs.getDouble(7),rs.getString(3),rs.getString(5),rs.getInt(6));
             	scholarships.add(schol);
             }
@@ -81,10 +77,15 @@ public class DBConnect {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Error in getData"+e);
+			System.out.println("Error in getData" + e);
 		}
 		return scholarships;
 	}
+	/*Function is called when the admin presses the distribute scholarships button in the UI.
+	 * It distributes the scholarships based on a sorted arraylist of scholarships and students.
+	 * After the distributions have been made, the students who have had scholarships accepted will 
+	 * have their information erased from the list of applicants database.
+	 */
 	public void distributeScholarship() throws SQLException {
 		ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
 		ArrayList<Student> students = new ArrayList<Student>();
@@ -92,14 +93,15 @@ public class DBConnect {
 		PreparedStatement ps =con.prepareStatement("select * from scholarships");
 		try {
 	        ResultSet rs=ps.executeQuery();
-	        while(rs.next())
-	        {
-	        	// create a scholarship object using values in specific columns of this row
-	        	// row corresponds to a scholarship in database
-	        	// ID, name, GPA, faculty, academicLevel, award
+	        while(rs.next()) {
+	        	/* create a scholarship object using values in specific columns of this row
+	        	* row corresponds to a scholarship in database
+	        	* ID, name, GPA, faculty, academicLevel, award
+	        	*/
 	        	Scholarship schol = new Scholarship(rs.getInt(1),rs.getString(2),rs.getDouble(7),rs.getString(3),rs.getString(5),rs.getInt(6));
 	        	scholarships.add(schol);
 	        }
+	        
 	        Comparator<Scholarship> compareByAward = new Comparator<Scholarship>() {
 	        	@Override
 	        	public int compare(Scholarship s1, Scholarship s2) {
@@ -109,21 +111,21 @@ public class DBConnect {
 	        // sorts scholarships in descending order of award
 	        Collections.sort(scholarships,Collections.reverseOrder(compareByAward));
 	        
-	        ps =con.prepareStatement("select * from applications");
+	        ps = con.prepareStatement("select * from applications");
 	        
-	        ps =con.prepareStatement("select * from student");
+	        ps = con.prepareStatement("select * from student");
 	
 	        rs=ps.executeQuery();
-	        while(rs.next())
-	        {
-	        	// create a scholarship object using values in specific columns of this row
-	        	// row corresponds to a scholarship in database
-	        	// ID, name, GPA, faculty, academicLevel, award
-	        	
-	        	//public Student(String username, double GPA, String faculty, String academicLevel, int id)
+	        while(rs.next()) {
+	        	/* create a scholarship object using values in specific columns of this row
+	        	*row corresponds to a scholarship in database
+	        	*ID, name, GPA, faculty, academicLevel, award
+	        	*public Student(String username, double GPA, String faculty, String academicLevel, int id)
+	        	*/
 	        	Student student = new Student(rs.getString(2),rs.getDouble(9),rs.getString(10),rs.getString(5),rs.getInt(1));
 	        	students.add(student);
 	        }
+	        
 	        Comparator<Student> compareByGPA = new Comparator<Student>() {
 	        	@Override
 	        	public int compare(Student s1, Student s2) {
@@ -136,17 +138,14 @@ public class DBConnect {
 	        ps =con.prepareStatement("select * from applications");
 	    	
 	        rs=ps.executeQuery();
-	        while(rs.next())
-	        {
-	        	// create a scholarship object using values in specific columns of this row
-	        	// row corresponds to a scholarship in database
-	        	// ID, name, GPA, faculty, academicLevel, award
-	        	//public Application(int ID, String student, int scholarship)
+	        while(rs.next()) {
+	        	/* create a scholarship object using values in specific columns of this row
+	        	* row corresponds to a scholarship in database
+	        	* int ApplicationID, String Applicant, int ScholarshipID
+	        	*/
 	        	Application application = new Application(rs.getInt(1),rs.getString(2),rs.getInt(3));
 	        	applications.add(application);
 	        }
-	        
-	        
 	        
 	        for (Scholarship scholarship : scholarships) {
 	        	ArrayList<Application> applicationsConsidered= new ArrayList<Application>();
@@ -155,58 +154,52 @@ public class DBConnect {
 	        			applicationsConsidered.add(application);
 	        		}
 	        	}
-	        	// now compare all the the students and give the scholarship to the one with the highest GPA
+	        	// Compare all the the students and give the scholarship to the one with the highest GPA
 	        	Iterator<Application> ap = applicationsConsidered.iterator();
 	        	while (ap.hasNext()) {
 	        		Application applicant = ap.next();
 	        		Iterator<Student> st = students.iterator();
 	        		while (st.hasNext()) {
 	        			Student student = st.next();
+	        			// If student has all the prerequisites
 	        			if(student.getUsername().equals(applicant.getStudent())) { 
 	        				if(student.getAcademicLevel().equals(scholarship.getAcademicLevel())) {
 	        					if(student.getGPA() >= scholarship.getGPA()) {
+	        						// add the scholarship to the student's ScholarShips_owned column in database 
 	        						try {
-	        							 //ID
 	        							String query = "UPDATE student SET ScholarShip_Owned = '"
 	        									+ scholarship.getName()
 	        									+ "' WHERE Student_ID = "
 	        									+ student.getID();
-	        							System.out.println(query);
 	        							PreparedStatement preparedStmt = con.prepareStatement(query);
-	        							preparedStmt.executeUpdate();		
+	        							preparedStmt.executeUpdate();	
+	        							// Deletion after scholarship is awarded to student
 	        							st.remove();
 	        							ap.remove();
 	        							query = "DELETE FROM applications "
 	        									+ "WHERE Applicant = '"
 	        									+ student.getUsername()
 	        									+ "'";
-	        							System.out.println(query);
 	        							preparedStmt = con.prepareStatement(query);
 	        							preparedStmt.executeUpdate();
 	        							
 	        						}catch(Exception ex) {
-	        							
 	        							System.out.println(ex);
 	        						}
-	      
 	        					}
 	        				}
 	        			}
 	        		}
 	        	}
 	        }
-		}catch(SQLException e)
-			{
-				System.out.println("Error in getData"+e.getMessage());
-				
-			}
-	    	  
-	   }
+		}catch(SQLException e) {
+			System.out.println("Error in getData" + e.getMessage());		
+		}	  
+	}
 
 	public boolean loginAdmin(String user, String password) {
-
 		String pass = "";
-		try{
+		try {
             PreparedStatement ps =con.prepareStatement("select administrator_password from administrators where administrator_username = '"
             		+ user
             		+ "' and administrator_password = '"
@@ -217,21 +210,17 @@ public class DBConnect {
             while(rs.next()) {
             	pass = rs.getString(1);
             }
-            
 		}
-		catch(Exception e)
-		{
-			System.out.println("Error in getData"+e);
+		catch(Exception e) {
+			System.out.println("Error in getData" + e);
 		}
-		
 		if (password.equals(pass))return true;
 		else return false;
-
 	}
 	
 	public boolean loginStudent(String user, String password) {
 		String pass = "";
-		try{
+		try {
             PreparedStatement ps =con.prepareStatement("select Password from student where Username = '"
             		+ user
             		+ "' and Password = '"
@@ -242,16 +231,12 @@ public class DBConnect {
             while(rs.next()) {
             	pass = rs.getString(1);
             }
-            
 		}
-		catch(Exception e)
-		{
-			System.out.println("Error in getData"+e);
+		catch(Exception e) {
+			System.out.println("Error in getData" + e);
 		}
-		
 		if (password.equals(pass))return true;
 		else return false;
-
 	}
 	
 	public void addStudent(String user, double GPA, String faculty, String level, String password) {
@@ -272,11 +257,12 @@ public class DBConnect {
 			preparedStmt.executeUpdate();		
 			
 		}catch(Exception ex) {
-			
 			System.out.println(ex);
 		}
 	}
-
+	/* Function that adds the student to the list of applications for scholarships 
+	 * in a database after the student presses the add scholarship button.
+	 */
 	public void addApplication(String Applicant, String Scholarship) {
 		try {
 			 //ID, username, password, student name, level, scholarship owned, scholarship offered, scholarships accepted, GPA, Faculty
@@ -290,7 +276,6 @@ public class DBConnect {
 			
 			
 		}catch(Exception ex) {
-			
 			System.out.println(ex);
 		}
 	}
@@ -303,6 +288,5 @@ public class DBConnect {
 		}catch(Exception e){
 			
 		}
-		
 	}
 }	

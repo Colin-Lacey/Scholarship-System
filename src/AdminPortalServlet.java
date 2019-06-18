@@ -1,8 +1,5 @@
-
 import java.io.*;
-import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,9 +47,9 @@ public class AdminPortalServlet extends HttpServlet {
 	     	                +"<th>Faculty</th>"
 	     	                +"<th>Minimum GPA</th>"
 	     	                +"<th>Award</th>"
-	     	            +"</tr>"
-	     	        +"</thead>"
-	     	        +"<tbody>");
+	     	                +"</tr>"
+	     	                +"</thead>"
+	     	                +"<tbody>");
 	         // dynamically update table from mySQl
 	         ArrayList<Scholarship> scholarships = connect.getScholarships();
 	         // for each scholarship in the databse, format each of its attributes in the table
@@ -79,76 +76,67 @@ public class AdminPortalServlet extends HttpServlet {
 	         	out.println("</tr>");
 	         }
 	         out.println("</tbody></table>");
-	         out.println( 
-	         		" 			<p>\r\n" + 
-	         		"	<form action=\"DeleteScholarshipServlet\" method = \"POST\">\r\n" + 
-	         		"		<input type=\"hidden\"  name = \"scholID\" id=\"scholID\" value=\"\" />\r\n" + 
-	         		"		<input type=\"submit\"  value = \"Delete scholarship\"/>\r\n" + 
-	         		"	</form>\r\n" + 
-	         		"</p>" 			+
-	        		"<p>\r\n" + 
-	         		"	<form action=\"DistributeScholarshipsServlet\" method = \"POST\">\r\n" + 
-	         		"		<input type=\"submit\"  value = \"Distribute Scholarships\"/>\r\n" + 
-	         		"	</form>\r\n" + 
-	         		"</p>" +
-	         		"</p>\n" +
-	         		"<form action=\"AddScholarshipServlet\" method=\"POST\">" +
-	         		" <h1>Enter new scholarship details:</h1>\n" + 
-	         		"				<p>Name\n" + 
-	         		"					<input type=\"text\" name=\"name\" />\n" + 
-	         		"				</p>\n" + 
-	         		"				<p>Minimum GPA\n" + 
-	         		"					<input type=\"text\" name=\"gpa\" />\n" + 
-	         		"				</p>\n" + 
-	         		"				<p>Faculty\n" + 
-	         		"					<select name = \"faculty\">\n" + 
-	         		"  						<option value=\"Science\">Science</option>\n" + 
-	         		"  						<option value=\"Arts\">Arts</option>\n" + 
-	         		"  						<option value=\"Medicine\">Medicine</option>\n" + 
-	         		"  						<option value=\"Business\">Business</option>\n" + 
-	         		"					</select>\n" + 
-	         		"				</p>\n" + 
-	         		"				<p>Academic Level\n" + 
-	         		"					<select name = \"level\">\n" + 
-	         		"  						<option value=\"Undergraduate\">Undergraduate</option>\n" + 
-	         		"  						<option value=\"Graduate\">Graduate</option>\n" + 
-	         		"  						<option value=\"postgrad\">Post-graduate</option>\n" + 
-	         		"					</select>\n" + 
-	         		"				</p>\n" + 
-	         		"				<p>Award Value\n<input type=\"text\" name=\"award\" />\n</p>\n" +
-	         		"				<p>Award Quantity\n<input type=\"text\" name=\"awardNum\" />\n</p>\n" +
-	         		"				<p>\n" + 
-	         		"					<input type=\"submit\" value=\"Add Scholarship\" />\n" + 
-	         		"				</p>" +
-	         		"</form>" +
-	         		"  	</div>\n" + 
-	         		"    <script>\r\n" + 
-	         		"	$(document).ready(function (){\r\n" + 
-	         		"    var table = $('#example').DataTable();\r\n" + 
-	         		"    \r\n" + 
-	         		"    $('#example tbody').on( 'click', 'tr', function () {\r\n" + 
-	         		"       	if ( $(this).hasClass('selected') ) {\r\n" + 
-	         		"          	 $(this).removeClass('selected');\r\n" + 
-	         		"       	} else {\r\n" + 
-	         		"         	table.$('tr.selected').removeClass('selected');\r\n" + 
-	         		"           	$(this).addClass('selected');\r\n" + 
-	         		"       }\r\n" + 
-	         		"       var data = $('#example').DataTable().row('.selected').data();\r\n" + 
-	         		"       var id = data[0];\r\n" + 
-	         		"       document.getElementById('scholID').value = id;\r\n" + 
-	         		"   }); \r\n" + 
-	         		"   }); \r\n" + 
-	         		"</script></body></html>");
+	         out.println( "<p>\r\n" + 
+	         			  "<form action=\"DeleteScholarshipServlet\" method = \"POST\">\r\n" + 
+	         			  "		<input type=\"hidden\"  name = \"scholID\" id=\"scholID\" value=\"\" />\r\n" + 
+	         			  "		<input type=\"submit\"  value = \"Delete scholarship\"/>\r\n" + 
+	         			  "</form>\r\n" + 
+	         			  "</p>" +
+	         			  "<p>\r\n" + 
+	         			  "<form action=\"DistributeScholarshipsServlet\" method = \"POST\">\r\n" + 
+	         			  "		<input type=\"submit\"  value = \"Distribute Scholarships\"/>\r\n" + 
+	         			  "</form>\r\n" + 
+	         			  "</p>" +
+	         			  "</p>\n" +
+	         			  "<form action=\"AddScholarshipServlet\" method=\"POST\">" +
+	         			  "		<h1>Enter new scholarship details:</h1>\n" + 
+	         			  "			<p>Name\n" + 
+	         			  "				<input type=\"text\" name=\"name\" />\n" + 
+	         			  "			</p>\n" + 
+	         			  "			<p>Minimum GPA\n" + 
+	         			  "				<input type=\"text\" name=\"gpa\" />\n" + 
+	         			  "			</p>\n" + 
+	         			  "			<p>Faculty\n" + 
+	         			  "				<select name = \"faculty\">\n" + 
+	         			  "  				<option value=\"Science\">Science</option>\n" + 
+	         			  "  				<option value=\"Arts\">Arts</option>\n" + 
+	         			  "  				<option value=\"Medicine\">Medicine</option>\n" + 
+	         			  "  				<option value=\"Business\">Business</option>\n" + 
+	         			  "				</select>\n" + 
+	         			  "			</p>\n" + 
+	         			  "			<p>Academic Level\n" + 
+	         			  "				<select name = \"level\">\n" + 
+	         			  "	  				<option value=\"Undergraduate\">Undergraduate</option>\n" + 
+	         			  "  				<option value=\"Graduate\">Graduate</option>\n" + 
+	         			  "  				<option value=\"postgrad\">Post-graduate</option>\n" + 
+	         			  "				</select>\n" + 
+	         			  "			</p>\n" + 
+	         			  "			<p>Award Value\n<input type=\"text\" name=\"award\" />\n</p>\n" +
+	         			  "			<p>Award Quantity\n<input type=\"text\" name=\"awardNum\" />\n</p>\n" +
+	         			  "			<p>\n" + 
+	         			  "				<input type=\"submit\" value=\"Add Scholarship\" />\n" + 
+	         			  "			</p>" +
+	         			  "</form>" +
+	         			  "  	</div>\n" + 
+	         			  "    		<script>\r\n" + 
+	         			  "				$(document).ready(function (){\r\n" + 
+	         			  "    			var table = $('#example').DataTable();\r\n" + 
+	         			  "    		\r\n" + 
+	         			  "    		$('#example tbody').on( 'click', 'tr', function () {\r\n" + 
+	         			  "       	if ( $(this).hasClass('selected') ) {\r\n" + 
+	         			  "          	 $(this).removeClass('selected');\r\n" + 
+	         			  "       	} else {\r\n" + 
+	         			  "         	table.$('tr.selected').removeClass('selected');\r\n" + 
+	         			  "           	$(this).addClass('selected');\r\n" + 
+	         			  "       	}\r\n" + 
+	         			  "       	var data = $('#example').DataTable().row('.selected').data();\r\n" + 
+	         			  "       	var id = data[0];\r\n" + 
+	         			  "       	document.getElementById('scholID').value = id;\r\n" + 
+	         			  "   }); \r\n" + 
+	         			  "}); \r\n" + 
+	         			"</script></body></html>");
 	      } finally {
 	         out.close();  // Always close the output writer
 	      }
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
 }

@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/* Class is the basic structure of what a student
+ * object is in this project. Class is mainly being 
+ * called and used by the DBConnect class
+ */
 public class Student {
 	private double GPA;
 	private String faculty;
@@ -13,7 +16,6 @@ public class Student {
 		this.GPA = GPA;
 		this.faculty = faculty;
 		this.academicLevel = academicLevel;
-		// Gives a unique Identifier for any Scholarship type except for duplicates
 		this.id = id;
 		myScholarships = new ArrayList<Scholarship>();
 	}
@@ -38,12 +40,5 @@ public class Student {
 	}
 	public ArrayList<Scholarship> getMyScholarships() {
 		return myScholarships;
-	}
-	public String toString() {
-		int count = 0;
-		for(int i = 0; i < myScholarships.size(); i++) {
-			count++;
-		}
-		return "StudentID: " + this.id + " Number of scholarships granted : " + count;
 	}
 }

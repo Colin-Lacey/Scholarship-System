@@ -1,45 +1,41 @@
-<!--
-extensive code taken and modified from 
-https://javatutorial.net/java-servlet-post-example 
--->
 <!DOCTYPE html>
 <html>
-		<head>
-			<title>Form input</title>
-		</head>
-		<body bgcolor = "#39CCCC">
-			<form action="StudentServlet" method="POST">
-				Enter your details to register:
-				<p>Name
-					<input type="text" name="user" />
-				</p>
-				<p>GPA
-					<input type="text" name="gpa" />
-				</p>
-				<p>Faculty
-					<select name = "faculty">
-  						<option value="Science">Science</option>
-  						<option value="Arts">Arts</option>
-  						<option value="Medicine">Medicine</option>
-  						<option value="Business">Business</option>
-					</select>
-				</p>
-				<p>Academic Level
-					<select name = "level">
-  						<option value="Undergraduate">Undergraduate</option>
-  						<option value="Graduate">Graduate</option>
-  						<option value="postgrad">Post-graduate</option>
-					</select>
-				</p>
-				<p>Password
-					<input type="password" name="password" />
-				</p>
-				<p>
-					<input type="submit" value="Submit" />
-				</p>
-				<p>
-					Already registered? Login as a <a href="login-student.html">student</a> or <a href="login-admin.html">admin</a>
-				</p>
-			</form>
-		</body>
+	<head>
+		<title>Form input</title>
+	</head>
+	<body bgcolor = "#39CCCC">
+		<form action = "StudentServlet" method = "POST">
+			Enter your details to register:
+			<p> Name
+				<input type = "text" name = "user" />
+			</p>
+			<p> GPA
+				<input type = "text" name ="gpa" />
+			</p>
+			<p> Faculty
+				<select name = "faculty">
+  					<option value = "Science"> Science </option>
+  					<option value = "Arts"> Arts </option>
+  					<option value = "Medicine"> Medicine </option>
+  					<option value = "Business"> Business </option>
+				</select>
+			</p>
+			<p> Academic Level
+				<select name = "level">
+  					<option value = "Undergraduate"> Undergraduate </option>
+  					<option value = "Graduate"> Graduate </option>
+  					<option value = "postgrad"> Post-graduate </option>
+				</select>
+			</p>
+			<p> Password
+				<input type = "password" name = "password" />
+			</p>
+			<p>
+				<input type = "submit" value = "Submit" />
+			</p>
+			<p>
+				Already registered? Login as a <a href = "login-student.html"> student </a> or <a href = "login-admin.html"> admin </a>
+			</p>
+		</form>
+	</body>
 </html>

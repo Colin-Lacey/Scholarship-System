@@ -1,7 +1,3 @@
-
-
-
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginStudentServlet
+ * Servlet implementation class LoginAdminServlet
  */
 @WebServlet("/LoginAdminServlet")
 public class LoginAdminServlet extends HttpServlet {
@@ -21,14 +17,13 @@ public class LoginAdminServlet extends HttpServlet {
      */
     public LoginAdminServlet() {
         super();
-        // TODO Auto-generated constructor stub
+     
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -36,21 +31,19 @@ public class LoginAdminServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Create database connection
 		DBConnect connect = new DBConnect();
+		
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
-		System.out.println(password);
+		// Verify user
 		if (connect.loginAdmin(user, password) == true) {
-			System.out.println("success");
 			response.sendRedirect("AdminPortalServlet");
 		} else {
 			response.sendRedirect("wrong.html");
 		}
-//		Student student = new Student(gpa, faculty, level);
-//		ArrayList<Scholarship> arr = student.getMyScholarships();
 		
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 	}
-
 }
