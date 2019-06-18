@@ -1,5 +1,3 @@
-// extensive code taken and modified from 
-// https://javatutorial.net/java-servlet-post-example
 
 import java.sql.*;
 import java.io.IOException;
@@ -34,9 +32,7 @@ public class StudentApplyServlet extends HttpServlet {
 		System.out.println("the user is " + user + "\n the scholarship is " + scholarship);
 		
 		connect.addApplication(user, scholarship);
-		response.sendRedirect("http://localhost:8080/Scholarship-System/StudentPortalServlet/");
 		
-		//connect.close();
+		response.sendRedirect("http://localhost:8080/Scholarship-System/StudentPortalServlet");
 	}
-	
 }

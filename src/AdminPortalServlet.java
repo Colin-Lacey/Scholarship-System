@@ -86,7 +86,12 @@ public class AdminPortalServlet extends HttpServlet {
 	         		"		<input type=\"submit\"  value = \"Delete scholarship\"/>\r\n" + 
 	         		"	</form>\r\n" + 
 	         		"</p>" 			+
-	         		"		</p>\n" +
+	        		"<p>\r\n" + 
+	         		"	<form action=\"DistributeScholarshipsServlet\" method = \"POST\">\r\n" + 
+	         		"		<input type=\"submit\"  value = \"Distribute Scholarships\"/>\r\n" + 
+	         		"	</form>\r\n" + 
+	         		"</p>" +
+	         		"</p>\n" +
 	         		"<form action=\"AddScholarshipServlet\" method=\"POST\">" +
 	         		" <h1>Enter new scholarship details:</h1>\n" + 
 	         		"				<p>Name\n" + 

@@ -1,5 +1,3 @@
-// extensive code taken and modified from 
-// https://javatutorial.net/java-servlet-post-example
 
 import java.sql.*;
 import java.io.IOException;
@@ -39,8 +37,5 @@ public class AddScholarshipServlet extends HttpServlet {
 		connect.addScholarship(name, gpa, faculty, level, award, awardNum);
 		
 		response.sendRedirect("http://localhost:8080/Scholarship-System/AdminPortalServlet/");
-		
-		//connect.close();
 	}
-	
 }

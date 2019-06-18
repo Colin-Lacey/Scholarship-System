@@ -32,7 +32,6 @@ public class StudentPortalServlet extends HttpServlet {
 	      // Allocate a output writer to write the response message into the network socket
 	    HttpSession session = request.getSession(false);
 		String user = (String) session.getAttribute("user");
-		System.out.println(user);
 		PrintWriter out = response.getWriter();
 	      DBConnect connect = new DBConnect();
 	 

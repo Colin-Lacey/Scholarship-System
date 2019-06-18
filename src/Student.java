@@ -5,9 +5,11 @@ public class Student {
 	private String faculty;
 	private String academicLevel;
 	private int id;
+	private String username;
 	public ArrayList<Scholarship> myScholarships;
 
-	public Student(double GPA, String faculty, String academicLevel, int id) {
+	public Student(String username, double GPA, String faculty, String academicLevel, int id) {
+		this.username = username;
 		this.GPA = GPA;
 		this.faculty = faculty;
 		this.academicLevel = academicLevel;
@@ -27,6 +29,9 @@ public class Student {
 	}
 	public String getAcademicLevel() {
 		return this.academicLevel;
+	}
+	public String getUsername() {
+		return this.username;
 	}
 	public int getID() {
 		return this.id;

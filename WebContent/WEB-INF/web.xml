@@ -7,7 +7,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>MyHttpServlet</servlet-name>
-    <url-pattern>/StudentServlet/</url-pattern>
+    <url-pattern>/StudentServlet/StudentPortalServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>studentLogin</servlet-name>
@@ -42,6 +42,14 @@
     <url-pattern>/LoginStudentServlet/StudentPortalServlet</url-pattern>
   </servlet-mapping>
   <servlet>
+    <servlet-name>studentPortalApply</servlet-name>
+    <servlet-class>StudentPortalServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentPortalApply</servlet-name>
+    <url-pattern>/StudentPortalServlet/StudentApplyServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>adminPortal</servlet-name>
     <servlet-class>AdminPortalServlet</servlet-class>
   </servlet>
@@ -64,5 +72,13 @@
   <servlet-mapping>
     <servlet-name>deleteScholarship</servlet-name>
     <url-pattern>/AdminPortalServlet/DeleteScholarshipServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>distributeScholarships</servlet-name>
+    <servlet-class>DistributeScholarshipsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>distributeScholarships</servlet-name>
+    <url-pattern>/AdminPortalServlet/DistributeScholarshipsServlet</url-pattern>
   </servlet-mapping>
 </web-app>
