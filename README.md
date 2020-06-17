@@ -1,5 +1,5 @@
 # Scholarship-System
-Simple project using HTML and barebones JavaScript on the client side, communicating with a Java/SQL backend using Java servlets.
+Simple project using HTML and barebones JavaScript on the client side, communicating with a Java/SQL backend using an Apache server and Java servlets.
 
 The system models primitive authentication and allows CRUD operations for an admin through HTML and JavaScript.
 
